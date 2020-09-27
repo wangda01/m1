@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.mybatis.example.BlogMapper">
+
+    <!--通常将sql语句写在标签内部
+      select标签内部写查询语句，必须指定返回类型
+      insert标签内部写插入语句
+      update标签内部写update语句
+      delete标签内部写delete语句
+      每个标签有一个id属性：identifier：唯一标识符，不可重复
+      select标签有resultType属性：表示将表中返回的数据封装在哪个对象里面
+    -->
+    <select id="selectid" resultType="com.hncj.bean.book">
+    SELECT * FROM book WHERE bid = #{bid}
+    </select>
+
+    <insert id="insert">
+        insert into book(bookname,price,author) values (#{bookname},#{price},#{author})
+    </insert>
+
+    <delete id="delete">
+        delete from book where bid=#{bid}
+    </delete>
+
+    <update id="update">
+        update book set bookname=#{bookname} where bid=#{bid}
+    </update>
+
+</mapper>
